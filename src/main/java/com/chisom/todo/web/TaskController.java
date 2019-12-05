@@ -29,7 +29,11 @@ public class TaskController {
         return new MyResponseEntity<>(HttpStatus.OK, "Successful", task);
     }
 
-
+    @GetMapping("/tasks/{id}")
+    public MyResponseEntity<Task> getTaskById(@PathVariable  Long id) {
+        Task taskId = taskService.retrieveTaskById(id);
+        return new MyResponseEntity<>(HttpStatus.OK, "Successful", taskId);
+    }
 
 
 }
