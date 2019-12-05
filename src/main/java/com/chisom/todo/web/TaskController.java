@@ -35,5 +35,9 @@ public class TaskController {
         return new MyResponseEntity<>(HttpStatus.OK, "Successful", taskId);
     }
 
-
+    @PostMapping("/tasks")
+    public MyResponseEntity<Task>createTask(@RequestBody Task task) {
+        Task saveTask = taskService.createNewTask(task);
+        return new MyResponseEntity<>(HttpStatus.CREATED, "Task created Successfully", saveTask);
+    }
 }
