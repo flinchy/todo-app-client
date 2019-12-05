@@ -40,4 +40,16 @@ public class TaskController {
         Task saveTask = taskService.createNewTask(task);
         return new MyResponseEntity<>(HttpStatus.CREATED, "Task created Successfully", saveTask);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/tasks/{id}")
+    public MyResponseEntity<Task> updateTask(@RequestBody Task task, @PathVariable Long id) {
+        Task newTask = taskService.updateTask(task, id);
+        return new MyResponseEntity<>(HttpStatus.OK, "Task updated successfully", newTask);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/tasks/{id}")
+    public MyResponseEntity<Task> deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        return new MyResponseEntity<>(HttpStatus.OK, "Task deleted successfully");
+    }
 }
