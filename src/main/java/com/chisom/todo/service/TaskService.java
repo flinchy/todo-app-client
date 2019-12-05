@@ -9,4 +9,6 @@ public interface TaskService {
     List<Task> retrieveAllTasks();
     Task retrieveTaskById(Long id);
     Task createNewTask(Task task);
+    Task updateTask(Task task, Long id);
+    Task deleteTask(Long id);
 }
