@@ -17,10 +17,10 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
+//    @NotNull
     private String title;
 
-    @NotNull
+//    @NotNull
     private String description;
     private StatusEnum status;
 
@@ -30,7 +30,7 @@ public class Task {
     private LocalDateTime updatedAt;
     private LocalDateTime completedAt;
 
-    public Task(@NotNull String title, @NotNull String description, StatusEnum status,
+    public Task(String title, String description, StatusEnum status,
                 LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime completedAt) {
         this.title = title;
         this.description = description;
@@ -40,13 +40,13 @@ public class Task {
         this.completedAt = completedAt;
     }
 
-    public Task(@NotNull String title, @NotNull String description, StatusEnum status) {
+    public Task(String title, String description, StatusEnum status) {
         this.title = title;
         this.description = description;
         this.status = status;
     }
 
-    public Task(@NotNull String title, @NotNull String description) {
+    public Task(String title, String description) {
         this.title = title;
         this.description = description;
     }

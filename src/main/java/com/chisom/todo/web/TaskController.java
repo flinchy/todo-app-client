@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+
 public class TaskController {
 
     private TaskService taskService;
@@ -23,18 +24,19 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping("/tasks")
+    @CrossOrigin(origins = "http://localhost:3000")
     public MyResponseEntity<List<Task>> getAllTask() {
         List<Task> task = taskService.retrieveAllTasks();
         return new MyResponseEntity<>(HttpStatus.OK, "Successful", task);
     }
 
     @GetMapping("/tasks/{id}")
-    public MyResponseEntity<Task> getTaskById(@PathVariable  Long id) {
+    public MyResponseEntity<Task> getTaskById(@PathVariable Long id) {
         Task taskId = taskService.retrieveTaskById(id);
         return new MyResponseEntity<>(HttpStatus.OK, "Successful", taskId);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/tasks")
     public MyResponseEntity<Task>createTask(@RequestBody Task task) {
         Task saveTask = taskService.createNewTask(task);
