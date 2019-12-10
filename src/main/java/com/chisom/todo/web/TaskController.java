@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "https://todo-flinchy.netlify.com/")
+@CrossOrigin(origins = "https://todo-flinchy.netlify.com")
 @RestController
 public class TaskController {
 
