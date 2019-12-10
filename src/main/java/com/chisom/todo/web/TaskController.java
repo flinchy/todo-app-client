@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-
 public class TaskController {
 
     private TaskService taskService;
@@ -19,12 +19,13 @@ public class TaskController {
     @Autowired
     TaskRepository taskRepository;
 
+
     @Autowired
     public void setTaskService(TaskService taskService) {
         this.taskService = taskService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/tasks")
     public MyResponseEntity<List<Task>> getAllTask() {
         List<Task> task = taskService.retrieveAllTasks();
         return new MyResponseEntity<>(HttpStatus.OK, "Successful", task);
@@ -36,7 +37,6 @@ public class TaskController {
         return new MyResponseEntity<>(HttpStatus.OK, "Successful", taskId);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/tasks")
     public MyResponseEntity<Task>createTask(@RequestBody Task task) {
         Task saveTask = taskService.createNewTask(task);
