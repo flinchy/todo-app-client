@@ -3,12 +3,7 @@ package com.chisom.todo.entity;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,6 +17,8 @@ public class Task {
 
 //    @NotNull
     private String description;
+
+    @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
     @CreationTimestamp

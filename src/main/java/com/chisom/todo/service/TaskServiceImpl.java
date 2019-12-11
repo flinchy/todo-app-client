@@ -32,10 +32,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task updateTask(Task task, Long id) {
+    public Task updateTask(Task newTask, Long id) {
        Optional<Task> taskId = taskRepository.findById(id);
        if(taskId.isPresent()) {
-           return taskRepository.save(task);
+           Task task = taskId.get();
+           newTask.setCreatedAt(task.getCreatedAt());
+           return taskRepository.save(newTask);
 
        } else {
            return taskId.orElseThrow(TaskNotFoundException::new);
